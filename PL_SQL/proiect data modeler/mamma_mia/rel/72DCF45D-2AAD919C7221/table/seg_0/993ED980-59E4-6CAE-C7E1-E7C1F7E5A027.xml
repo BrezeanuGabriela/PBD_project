@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="993ED980-59E4-6CAE-C7E1-E7C1F7E5A027" name="Tipuri_pizza">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>CD2E82E7-D1B1-3337-AB7B-7D014CCF2E86</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_PIZZA" id="55BE2C86-2587-E53B-CCBD-3B7ACE71E863">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>F31C376B-70D0-33E4-AD5C-53D4983A5DD7</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DENUMIRE" id="42F8552B-4A1E-2284-D45C-7418A805E1E5">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>CEA13925-1C4A-CBB9-C6C2-5BDA9D17924B</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>tipuri_pizza_denumire_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(trim(denumire)) &gt; 0 AND regexp_like(denumire, &apos;^[a-zA-Z ]*$&apos;)
+"/>
+</checkConstraint>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="GRAMAJ" id="F0FFF666-5F3F-F993-C21B-A0FD19DF858B">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>E6BB74BD-504E-208F-D4D1-F3D53D886A70</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>tipuri_pizza_gramaj_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="GRAMAJ between 0 and 2000"/>
+</checkConstraint>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRET" id="94D69666-C80A-9179-6006-6ED69F365CAA">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>8822F048-4ACA-00E0-EA4E-88AFBEFFF8A8</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>tipuri_pizza_pret_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>99</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5E1FB3B6-8C35-E313-61BC-23B9DF960EC8" name="Tipuri_pizza_PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>99FDA958-3EAA-2E07-CDF2-A8CE78F22059</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="55BE2C86-2587-E53B-CCBD-3B7ACE71E863"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="88B8C864-B0CA-7795-E8EC-83D89348B7B1" name="Tipuri_pizza__UN">
+<createdBy>User</createdBy>
+<createdTime>2023-05-16 22:39:02 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="42F8552B-4A1E-2284-D45C-7418A805E1E5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

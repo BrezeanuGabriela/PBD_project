@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="91019706-19E0-C24E-9063-70CEB22A886C" name="produse_comanda">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_COMANDA" id="8C3DAF21-1860-B2C3-4D90-50A2E03FFD01">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A4C4D951-7655-E142-A7C2-E40FE70238EB" referredColumn="72955A19-A09D-625C-5FF7-FFD2862ECE29"/>
+</associations>
+</Column>
+<Column name="ID_PIZZA" id="2B15DEEC-1C72-3E4D-A8E0-3C20BD6A8E9E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A7FB1093-99AB-807F-E92C-17223B0C8108" referredColumn="55BE2C86-2587-E53B-CCBD-3B7ACE71E863"/>
+</associations>
+</Column>
+<Column name="CANTITATE" id="1113ADAF-FB60-5956-37AF-14FD9EFF9BAC">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>5BFE09D9-4BA0-A080-01C3-16B6EB9CAADE</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>check_cantitate_produs</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="cantitate &gt; 0"/>
+</checkConstraint>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A483DC31-114E-2F43-ABFE-CE6950397EC8" name="produse_comanda_PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8C3DAF21-1860-B2C3-4D90-50A2E03FFD01"/>
+<colUsage columnID="2B15DEEC-1C72-3E4D-A8E0-3C20BD6A8E9E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8D7622D3-1EEE-91F8-D07D-C574D650C212" name="prod_com_comenzi_FK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>89EE5ACC-2F3A-2D4D-26BE-CEEB43F5D005</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8C3DAF21-1860-B2C3-4D90-50A2E03FFD01"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="32A97733-EA06-6635-9D9F-AC0F02AC34B6" name="prod_com_tip_pizza_FK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>89EE5ACC-2F3A-2D4D-26BE-CEEB43F5D005</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2B15DEEC-1C72-3E4D-A8E0-3C20BD6A8E9E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

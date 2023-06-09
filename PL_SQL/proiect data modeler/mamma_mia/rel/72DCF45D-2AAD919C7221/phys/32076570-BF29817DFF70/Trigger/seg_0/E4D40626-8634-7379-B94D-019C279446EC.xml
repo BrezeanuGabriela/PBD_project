@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="verificare_data_comanda" directorySegmentName="seg_0" id="E4D40626-8634-7379-B94D-019C279446EC">
+<createdBy>User</createdBy>
+<createdTime>2023-05-16 20:55:17 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<actions>INSERT, UPDATE</actions>
+<body><![CDATA[DECLARE
+    v_current_date DATE := SYSDATE;
+BEGIN
+    IF :NEW.data_comanda > v_current_date THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Data comenzii nu poate fi din viitor.');
+    ELSIF :NEW.data_comanda < TRUNC(v_current_date) THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Data comenzii nu poate fi din trecut.');
+    END IF;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<table>58903011-132D-1480-77FB-9F9FFEB88960</table>
+</TriggerOraclev10g>

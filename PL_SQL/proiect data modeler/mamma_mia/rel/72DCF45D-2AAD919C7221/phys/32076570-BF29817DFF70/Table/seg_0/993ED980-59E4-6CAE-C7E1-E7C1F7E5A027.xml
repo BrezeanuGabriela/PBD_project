@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="Tipuri_pizza" directorySegmentName="seg_0" id="993ED980-59E4-6CAE-C7E1-E7C1F7E5A027">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DENUMIRE" id="42F8552B-4A1E-2284-D45C-7418A805E1E5">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_PIZZA" id="55BE2C86-2587-E53B-CCBD-3B7ACE71E863">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PRET" id="94D69666-C80A-9179-6006-6ED69F365CAA">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="GRAMAJ" id="F0FFF666-5F3F-F993-C21B-A0FD19DF858B">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Tipuri_pizza_PK" id="5E1FB3B6-8C35-E313-61BC-23B9DF960EC8">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="Tipuri_pizza__UN" id="88B8C864-B0CA-7795-E8EC-83D89348B7B1">
+<createdBy>User</createdBy>
+<createdTime>2023-05-16 22:39:02 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev11g>

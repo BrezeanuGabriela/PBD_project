@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="produse_comanda" directorySegmentName="seg_0" id="91019706-19E0-C24E-9063-70CEB22A886C">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CANTITATE" id="1113ADAF-FB60-5956-37AF-14FD9EFF9BAC">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_PIZZA" id="2B15DEEC-1C72-3E4D-A8E0-3C20BD6A8E9E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_COMANDA" id="8C3DAF21-1860-B2C3-4D90-50A2E03FFD01">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="prod_com_tip_pizza_FK" id="32A97733-EA06-6635-9D9F-AC0F02AC34B6">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="prod_com_comenzi_FK" id="8D7622D3-1EEE-91F8-D07D-C574D650C212">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="produse_comanda_PK" id="A483DC31-114E-2F43-ABFE-CE6950397EC8">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

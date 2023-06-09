@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="actualizare_total_plata_comanda" directorySegmentName="seg_0" id="53D278EC-6BEF-910C-E292-55BEE05A91B3">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:47:58 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[BEGIN
+    IF :old.finalizata = 0 THEN
+        SELECT SUM(pc.cantitate * tp.pret) INTO :new.total_plata from produse_comanda pc, tipuri_pizza tp WHERE :old.id_comanda = pc.id_comanda AND tp.id_pizza = pc.id_pizza; 
+    END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<columns>E375B25A-95BB-DC19-65BA-539013C14AC4</columns>
+<table>58903011-132D-1480-77FB-9F9FFEB88960</table>
+</TriggerOraclev10g>

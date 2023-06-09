@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="Carduri_fidelitate" directorySegmentName="seg_0" id="BAF6113C-AADB-0519-3466-3C84A3D24FFD">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DATA_NASTERE_CLIENT" id="0EE87159-0179-6418-5E9A-608F9E346B4E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_CLIENT" id="AC70BBF1-40FA-2B2E-EF6B-DF3ED18A684E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PUNCTE_ACUMULATE" id="C8C9278E-AC73-67D6-7F77-082F21F013A4">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ID_CARD" id="ECA3284C-7DEC-6397-CC6D-514DC8E3F98E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="client_card_fidelitate" id="135A83F2-8160-C819-AA8D-807C199DB521">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Card_fidelitate_PK" id="09F2F0A1-E6B8-8A91-A64D-172DDB72E0F6">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="client.id_card_uk" id="349D688C-04CB-41B8-EDDF-622A59B470CB">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:26:21 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev11g>

@@ -1,0 +1,240 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="vizualizare_informatii" directorySegmentName="seg_0" id="52731A2A-EF27-1FED-6598-20B2FA3ABDCF">
+<createdBy>User</createdBy>
+<createdTime>2023-05-16 21:02:48 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE vizualizare_informatii IS
+    FUNCTION extrage_id_client (v_nr_telefon_client IN clienti.telefon%TYPE) RETURN NUMBER;
+    FUNCTION extrage_informatii_client (v_nr_telefon_client IN clienti.telefon%TYPE) RETURN clienti%ROWTYPE;
+    
+    FUNCTION extrage_id_pizza (p_denumire_pizza IN tipuri_pizza.denumire%TYPE) RETURN NUMBER;
+    
+    PROCEDURE vizualizare_toate_comenzile;
+    PROCEDURE vizualizare_comenzi_finalizate;
+    PROCEDURE vizualizare_comenzi_nefinalizate;
+    
+    PROCEDURE top_3_clienti_fideli;
+    PROCEDURE top_3_pizza_comandate;
+    
+    PROCEDURE vizualizare_meniu;
+END vizualizare_informatii;
+/
+
+CREATE OR REPLACE PACKAGE BODY vizualizare_informatii AS
+    FUNCTION extrage_id_client
+        (v_nr_telefon_client IN clienti.telefon%TYPE)
+        RETURN NUMBER
+        IS
+            v_id_client clienti.id_client%TYPE;
+        BEGIN
+            SELECT id_client INTO v_id_client FROM clienti WHERE telefon = v_nr_telefon_client;
+            RETURN v_id_client;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                DBMS_OUTPUT.put_line(&apos;Nu a fost gasit vreun client cu numarul de telefon: &apos; || v_nr_telefon_client);
+                RETURN -1;
+    END extrage_id_client;
+    
+    FUNCTION extrage_informatii_client
+        (v_nr_telefon_client IN clienti.telefon%TYPE) 
+        RETURN clienti%ROWTYPE
+        IS
+            v_client clienti%ROWTYPE;
+        BEGIN
+            SELECT * INTO v_client FROM clienti WHERE telefon = v_nr_telefon_client;
+            RETURN v_client;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                DBMS_OUTPUT.put_line(&apos;Nu a fost gasit vreun client cu numarul de telefon: &apos; || v_nr_telefon_client);
+                RETURN NULL; -- Return NULL or handle the exception accordingly
+    END extrage_informatii_client;
+    
+    FUNCTION extrage_id_pizza
+        (p_denumire_pizza IN tipuri_pizza.denumire%TYPE)
+        RETURN NUMBER
+        IS
+            v_id_pizza tipuri_pizza.id_pizza%TYPE;
+        BEGIN
+            SELECT id_pizza INTO v_id_pizza 
+            FROM tipuri_pizza 
+            WHERE denumire = p_denumire_pizza;
+            RETURN v_id_pizza;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                DBMS_OUTPUT.put_line(&apos;Nu a fost gasita vreo pizza cu denumirea: &apos; || p_denumire_pizza);
+                RETURN -1;
+    END extrage_id_pizza;
+    
+    PROCEDURE top_3_clienti_fideli 
+        IS
+            CURSOR c_clienti IS
+                SELECT id_client, COUNT(*) AS numar_comenzi
+                FROM comenzi
+                WHERE finalizata = 1
+                GROUP BY id_client
+                ORDER BY COUNT(*) DESC;   
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE(&apos;Top 3 clienti fideli...............&apos;);
+            
+            FOR r_client IN c_clienti LOOP
+                DECLARE
+                  client_name clienti.nume%TYPE;
+                BEGIN
+                    EXIT WHEN c_clienti%ROWCOUNT &gt; 3;
+                    
+                    SELECT nume || &apos; &apos; || prenume INTO client_name
+                      FROM clienti
+                      WHERE id_client = r_client.id_client;
+                    DBMS_OUTPUT.PUT_LINE(&apos;Clientul &apos; || client_name || &apos; are &apos; || r_client.numar_comenzi || &apos; comenzi&apos;);
+                END;
+            END LOOP;
+    END top_3_clienti_fideli; 
+    
+    PROCEDURE top_3_pizza_comandate
+        IS
+            CURSOR c_pizza_comandate IS
+                SELECT id_pizza, COUNT(*) AS numar_pizza
+                FROM produse_comanda
+                GROUP BY id_pizza
+                ORDER BY COUNT(*) DESC;
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE(&apos;Top 3 pizza comandate.............................&apos;);
+        
+            FOR r_pizza in c_pizza_comandate LOOP
+                DECLARE
+                    pizza_denumire tipuri_pizza.denumire%TYPE;
+                BEGIN
+                    EXIT WHEN c_pizza_comandate%ROWCOUNT &gt; 3;
+                    
+                    SELECT denumire INTO pizza_denumire
+                        FROM tipuri_pizza
+                        WHERE id_pizza = r_pizza.id_pizza;
+                    DBMS_OUTPUT.PUT_LINE(&apos;Tipul de pizza &apos; || pizza_denumire || &apos; a fost comandata de &apos; || r_pizza.numar_pizza || &apos; ori.&apos;);
+                    
+                END;
+            END LOOP;
+    END top_3_pizza_comandate;
+    
+    PROCEDURE vizualizare_toate_comenzile 
+        IS
+            CURSOR c_comenzi IS
+                SELECT * 
+                FROM comenzi
+                ORDER BY id_comanda, data_comanda;
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE(&apos;Afisarea tuturor comenzilor............................&apos;);
+            
+            FOR r_comanda in c_comenzi LOOP
+                DECLARE 
+                    -- preiau toate produsele din comanda
+                    CURSOR c_produse_comanda IS
+                        SELECT id_pizza, cantitate
+                        FROM produse_comanda
+                        WHERE id_comanda = r_comanda.id_comanda;
+                BEGIN
+                    DBMS_OUTPUT.PUT_LINE(&apos;Comanda cu id-ul: &apos; || r_comanda.id_comanda || &apos; si statusul finalizata: &apos; || r_comanda.finalizata);
+                    
+                    FOR r_pizza in c_produse_comanda LOOP
+                        DECLARE
+                            v_denumire_pizza tipuri_pizza.denumire%type;
+                        BEGIN
+                            SELECT denumire INTO v_denumire_pizza
+                            FROM tipuri_pizza
+                            WHERE id_pizza = r_pizza.id_pizza;
+                            
+                            DBMS_OUTPUT.PUT_LINE(&apos;Denumire: &apos; || v_denumire_pizza || &apos;, cantitate: &apos; || r_pizza.cantitate || &apos; bucati.&apos;);
+                        END;
+                    END LOOP;
+                    
+                    DBMS_OUTPUT.PUT_LINE(&apos;&apos;);
+                END;
+            END LOOP;
+    END vizualizare_toate_comenzile;
+    
+    PROCEDURE vizualizare_comenzi_nefinalizate 
+        IS
+            CURSOR c_comenzi IS
+                SELECT * 
+                FROM comenzi
+                WHERE finalizata = 0
+                ORDER BY id_comanda, data_comanda;
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE(&apos;Afisarea comenzilor in procesare...................................&apos;);
+            
+            FOR r_comanda in c_comenzi LOOP
+                DECLARE 
+                    -- preiau toate produsele din comanda
+                    CURSOR c_produse_comanda IS
+                        SELECT id_pizza, cantitate
+                        FROM produse_comanda
+                        WHERE id_comanda = r_comanda.id_comanda;
+                BEGIN
+                    DBMS_OUTPUT.PUT_LINE(&apos;Comanda cu id-ul: &apos; || r_comanda.id_comanda || &apos; si statusul finalizata: &apos; || r_comanda.finalizata);
+                    
+                    FOR r_pizza in c_produse_comanda LOOP
+                        DECLARE
+                            v_denumire_pizza tipuri_pizza.denumire%type;
+                        BEGIN
+                            SELECT denumire INTO v_denumire_pizza
+                            FROM tipuri_pizza
+                            WHERE id_pizza = r_pizza.id_pizza;
+                            
+                            DBMS_OUTPUT.PUT_LINE(&apos;Denumire: &apos; || v_denumire_pizza || &apos;, cantitate: &apos; || r_pizza.cantitate || &apos; bucati.&apos;);
+                        END;
+                    END LOOP;
+                    
+                    DBMS_OUTPUT.PUT_LINE(&apos;&apos;);
+                END;
+            END LOOP;
+    END vizualizare_comenzi_nefinalizate;
+    
+    PROCEDURE vizualizare_comenzi_finalizate 
+        IS
+            CURSOR c_comenzi IS
+                SELECT * 
+                FROM comenzi
+                WHERE finalizata = 1
+                ORDER BY id_comanda, data_comanda;
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE(&apos;Afisarea comenzilor finalizate...................................&apos;);
+            
+            FOR r_comanda in c_comenzi LOOP
+                DECLARE 
+                    -- preiau toate produsele din comanda
+                    CURSOR c_produse_comanda IS
+                        SELECT id_pizza, cantitate
+                        FROM produse_comanda
+                        WHERE id_comanda = r_comanda.id_comanda;
+                BEGIN
+                    DBMS_OUTPUT.PUT_LINE(&apos;Comanda cu id-ul: &apos; || r_comanda.id_comanda || &apos; si statusul finalizata: &apos; || r_comanda.finalizata);
+                    
+                    FOR r_pizza in c_produse_comanda LOOP
+                        DECLARE
+                            v_denumire_pizza tipuri_pizza.denumire%type;
+                        BEGIN
+                            SELECT denumire INTO v_denumire_pizza
+                            FROM tipuri_pizza
+                            WHERE id_pizza = r_pizza.id_pizza;
+                            
+                            DBMS_OUTPUT.PUT_LINE(&apos;Denumire: &apos; || v_denumire_pizza || &apos;, cantitate: &apos; || r_pizza.cantitate || &apos; bucati.&apos;);
+                        END;
+                    END LOOP;
+                    
+                    DBMS_OUTPUT.PUT_LINE(&apos;&apos;);
+                END;
+            END LOOP;
+    END vizualizare_comenzi_finalizate;
+    
+    PROCEDURE vizualizare_meniu
+        IS
+            CURSOR c_pizza IS
+                SELECT * 
+                FROM tipuri_pizza
+                ORDER BY denumire ASC;
+        BEGIN
+            FOR r_pizza in c_pizza LOOP
+                DBMS_OUTPUT.PUT_LINE(&apos;Denumire: &apos; || r_pizza.denumire || &apos;, pret: &apos; || r_pizza.pret || &apos; lei, gramaj: &apos; || r_pizza.gramaj || &apos; grame.&apos;);
+            END LOOP;
+    END vizualizare_meniu;
+END vizualizare_informatii;</source>
+</PackageOracle>

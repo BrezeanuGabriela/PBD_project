@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="600D9875-FE87-548C-0FF6-B4A66DB7F930" name="Facturi">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>42C6E960-1B46-DC23-C53D-A4060AAC92B9</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_FACTURA" id="70916F92-D99F-2068-9DAA-6AC7F40D280F">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>E06C940D-6D0C-A3C2-A8C2-5FBEFEF227EA</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SERIE" id="2F76EDFA-0CA9-C849-1D2E-0ACC06149789">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>6C226187-E1C4-6D4E-860E-DE61A93A431A</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NUMAR" id="B07759A9-09B6-186D-92F8-8E7CECC97BCA">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>8F057871-0682-6042-1CAC-124543C4A3A7</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementStartWith>100</autoIncrementStartWith>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_COMANDA" id="4BD59804-093C-BBDC-54A4-DC0026AD2D6A">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>C751815F-53E9-0529-724E-67D078E91A97</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B5FB00F3-9E16-1806-6B91-A5B4C51E3B94" referredColumn="72955A19-A09D-625C-5FF7-FFD2862ECE29"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="150B1F17-4F1D-C68D-D451-484321B0E325" name="Facturi_PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>10FB88A2-2057-B21D-3AF1-32DE0C6E331A</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="70916F92-D99F-2068-9DAA-6AC7F40D280F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F48B610C-FB84-5FE3-54CC-D00D4CDEAD7E" name="Facturi__IDX">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>BE0D80FC-1862-38A2-6485-6869C5061EF1</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="4BD59804-093C-BBDC-54A4-DC0026AD2D6A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4DFB00BF-9F7A-AF90-1ED5-9728DFCBD1E7" name="Relation_14">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>BE0D80FC-1862-38A2-6485-6869C5061EF1</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4BD59804-093C-BBDC-54A4-DC0026AD2D6A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

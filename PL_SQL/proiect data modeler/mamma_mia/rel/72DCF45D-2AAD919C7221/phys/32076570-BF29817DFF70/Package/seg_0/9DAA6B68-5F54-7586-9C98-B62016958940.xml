@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="sterge_informatii" directorySegmentName="seg_0" id="9DAA6B68-5F54-7586-9C98-B62016958940">
+<createdBy>User</createdBy>
+<createdTime>2023-05-17 21:02:40 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE sterge_informatii IS
+    PROCEDURE sterge_produs_comanda(
+        p_id_comanda IN produse_comanda.id_comanda%TYPE,
+        p_denumire_pizza  IN tipuri_pizza.denumire%TYPE
+    );
+END sterge_informatii;
+/
+CREATE OR REPLACE PACKAGE BODY sterge_informatii AS
+    PROCEDURE sterge_produs_comanda(
+        p_id_comanda IN produse_comanda.id_comanda%TYPE,
+        p_denumire_pizza  IN tipuri_pizza.denumire%TYPE
+    )
+    IS
+        v_id_pizza tipuri_pizza.id_pizza%TYPE;
+    BEGIN
+        v_id_pizza  := vizualizare_informatii.extrage_id_pizza(p_denumire_pizza);
+    
+        DELETE FROM produse_comanda
+        WHERE id_comanda = p_id_comanda
+          AND id_pizza = v_id_pizza;
+          
+        DBMS_OUTPUT.PUT_LINE(&apos;Inregistrarea a fost stearsa cu succes!&apos;);
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat cu succes! Eroare: &apos; || SQLERRM);
+    END sterge_produs_comanda;
+END sterge_informatii;</source>
+</PackageOracle>

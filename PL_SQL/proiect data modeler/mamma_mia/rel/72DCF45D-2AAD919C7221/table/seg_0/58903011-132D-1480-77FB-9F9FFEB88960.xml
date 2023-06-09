@@ -1,0 +1,109 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="58903011-132D-1480-77FB-9F9FFEB88960" name="Comenzi">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>7D40B769-21D1-354B-2757-316B4E94320F</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_COMANDA" id="72955A19-A09D-625C-5FF7-FFD2862ECE29">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>82AA58FF-5D17-DF88-D875-6314400732C5</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA_COMANDA" id="744EA573-3DED-279D-FB05-70411ABE1140">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>4CA6B5AF-D340-489A-3CC9-8AF0401ABBC9</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<constraintName>comanda_data_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="data_comanda&gt;=&apos;10-feb-2021&apos; "/>
+</checkConstraint>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_CLIENT" id="A6E518B9-37F4-E94D-3C59-F5597279FF1E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>88E3BA66-0B6F-57F0-0CC7-4E6A8DFC3BCB</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BEA81542-AA1E-39A8-EEEE-A5C65F809185" referredColumn="E4807FF8-B6C7-BDEC-3C70-77DEAABCB8AF"/>
+</associations>
+</Column>
+<Column name="TOTAL_PLATA" id="5DC35486-64FD-C1BF-E8B8-F93D2D48B3AA">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>2A11E947-7BB4-6C61-E272-6A8A26A949F4</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<constraintName>cost_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypeScale>2</dataTypeScale>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="total_plata &gt;= 0"/>
+</checkConstraint>
+<ownDataTypeParameters>,,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FINALIZATA" id="E375B25A-95BB-DC19-65BA-539013C14AC4">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>A7282D75-1A95-5383-49BF-5E42B145169D</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="53F002F8-78DB-13D5-7EBF-7DAFCB7381B0" name="Comanda_PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>251D1E69-F6F7-F4F4-F519-5FFFEBE1148C</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="72955A19-A09D-625C-5FF7-FFD2862ECE29"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BC95F24B-E93E-3197-7006-5292F0D70820" name="client_comanda_fk">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>46EDF51A-12CD-7036-23D1-5234E214E1B7</generatorID>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A6E518B9-37F4-E94D-3C59-F5597279FF1E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

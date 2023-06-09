@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="actualizare_informatii" directorySegmentName="seg_0" id="E355B9FD-19D2-44BB-46CA-4AAB5CD31EF7">
+<createdBy>User</createdBy>
+<createdTime>2023-05-17 13:37:08 UTC</createdTime>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE actualizare_informatii IS
+    PROCEDURE actualizare_status_comanda(
+        p_id_comanda comenzi.id_comanda%TYPE
+    );
+    
+    PROCEDURE actualizare_puncte_card(
+        p_total_comanda NUMBER,
+        p_id_client clienti.id_client%TYPE
+    );
+    
+    PROCEDURE actualizare_produs_comanda(
+        p_id_comanda comenzi.id_comanda%TYPE,
+        p_denumire_pizza tipuri_pizza.denumire%TYPE,
+        p_cantitate produse_comanda.cantitate%TYPE
+    );
+END actualizare_informatii;
+/
+
+CREATE OR REPLACE PACKAGE BODY actualizare_informatii AS
+    PROCEDURE actualizare_status_comanda(
+        p_id_comanda comenzi.id_comanda%TYPE
+    )
+    IS
+    BEGIN
+      UPDATE comenzi
+      SET finalizata = 1
+      WHERE id_comanda = p_id_comanda;
+      
+      COMMIT;
+      DBMS_OUTPUT.PUT_LINE(&apos;Statusul comenzii cu id-ul &apos;|| p_id_comanda ||&apos; a fost efectuat cu succes.&apos;);
+    EXCEPTION
+      WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20201, &apos;Tranzactia nu s-a efectuat!!! A aparut o eroare la executarea update-ului.  Eroare: &apos; || SQLERRM);
+        ROLLBACK;
+    END actualizare_status_comanda;
+    
+    PROCEDURE actualizare_puncte_card(
+        p_total_comanda NUMBER,
+        p_id_client clienti.id_client%TYPE
+    )
+    IS
+        v_total_puncte_anterior carduri_fidelitate.puncte_acumulate%type;
+        v_total NUMBER;
+    BEGIN
+        SELECT puncte_acumulate INTO v_total_puncte_anterior FROM carduri_fidelitate WHERE id_client = p_id_client;
+        v_total := v_total_puncte_anterior + 0.1 * p_total_comanda;
+        UPDATE carduri_fidelitate set puncte_acumulate = v_total WHERE id_client = p_id_client;
+            
+        DBMS_OUTPUT.PUT_LINE(&apos;Tranzactie reusita, punctele au fost alocate! Clientul cu id-ul &apos; || p_id_client || &apos; are &apos; || v_total_puncte_anterior + 0.1 * p_total_comanda || &apos; puncte.&apos;);
+    EXCEPTION
+        WHEN VALUE_ERROR THEN
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat!!! Eroare: Invalid value conversion&apos;);
+            DBMS_OUTPUT.PUT_LINE(&apos;Error at line: &apos; || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat!!! Eroare: &apos; || SQLERRM);
+            DBMS_OUTPUT.PUT_LINE(&apos;Error at line: &apos; || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+
+    END actualizare_puncte_card;
+    
+    PROCEDURE actualizare_produs_comanda(
+        p_id_comanda comenzi.id_comanda%TYPE,
+        p_denumire_pizza tipuri_pizza.denumire%TYPE,
+        p_cantitate produse_comanda.cantitate%TYPE
+    )
+    IS
+        v_id_pizza tipuri_pizza.id_pizza%TYPE;
+        v_status_comanda comenzi.finalizata%TYPE;
+    BEGIN
+        v_id_pizza  := vizualizare_informatii.extrage_id_pizza(p_denumire_pizza);
+        SELECT finalizata INTO v_status_comanda 
+        FROM comenzi
+        WHERE id_comanda = p_id_comanda;
+        
+        IF v_status_comanda = 0 THEN
+            IF p_cantitate !=0 THEN
+                UPDATE produse_comanda SET cantitate = p_cantitate WHERE id_comanda = p_id_comanda AND id_pizza = v_id_pizza;
+                COMMIT;
+                
+                IF v_id_pizza != -1 THEN
+                    DBMS_OUTPUT.PUT_LINE(&apos;S-a actualizat cu succes produsul &apos; || p_denumire_pizza || &apos; la comanda cu id-ul &apos; || p_id_comanda);
+                ELSE
+                    DBMS_OUTPUT.PUT_LINE(&apos;Tranzatia nu s-a efectuat!!! Eroare: Nu exista tipul de pizza solicitat.&apos;);
+                    ROLLBACK;
+                END IF;
+            ELSE
+                sterge_informatii.sterge_produs_comanda(p_id_comanda, p_denumire_pizza);
+            END IF;
+        ELSE
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzatia nu s-a efectuat!!! Eroare: Comanda a fost deja finalizata, nu se mai pot modifica produsele din interiorul acesteia.&apos;);
+        END IF;
+    END actualizare_produs_comanda;
+END actualizare_informatii;</source>
+</PackageOracle>

@@ -1,0 +1,281 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CF9466EB-74D7-03B6-ECD5-BD091D5DAA82" name="Clienti">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 08:38:11 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_CLIENT" id="4FB7CC6C-F1DE-0565-2F7B-A5A15F3CF119">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 08:38:42 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>99999</endValue>
+</rangeDef>
+</listOfRanges>
+</Attribute>
+<Attribute name="NUME" id="FFC827D9-C577-AE52-54F6-90B61ED3538C">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:46:09 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_nume_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(nume)&gt;1 and regexp_like(nume,&apos;^[A-Za-z]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PRENUME" id="3E9BD596-7665-BD20-F966-FFBF5CFF36CC">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:46:39 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_prenume_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(PRENUME)&gt;1 and regexp_like(prenume,&apos;^[A-Za-z]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TELEFON" id="7187D4E5-B716-5E85-22CC-D0FC5595BEAC">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:47:02 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_telefon_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(telefon,&apos;^07[0-9]{8}$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EMAIL" id="DB533CB8-5965-07DD-F455-18ADAB6AC668">
+<createdBy>User</createdBy>
+<createdTime>2021-11-03 16:39:25 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_email_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(EMAIL, &apos;[a-z0-9._%-]+@[a-z0-9._%-]+\.[a-z]{2,4}&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>60,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CARTIER" id="614296CA-9288-62CF-E7FC-F49F7B42E1A7">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:47:53 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_cartier_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(cartier)&gt;1 and regexp_like(cartier,&apos;^[A-Za-z+$]&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NUMAR_CARTIER" id="D16E418B-46B0-B293-382D-1234E2769F83">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:48:48 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_numar_cartier_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(numar_cartier,&apos;^[0-9]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>999</endValue>
+</rangeDef>
+</listOfRanges>
+</Attribute>
+<Attribute name="NR_BLOC" id="61C041FD-1CA6-51DB-18A8-C3E3742E8790">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:49:28 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_nr_bloc_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(nr_bloc,&apos;^[0-9]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>999</endValue>
+</rangeDef>
+</listOfRanges>
+</Attribute>
+<Attribute name="ETAJ" id="2F541058-020A-960C-1C5A-0A1504FC2BD2">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:50:27 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_etaj_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(etaj,&apos;^[0-9]+$&apos;) and etaj between 0 and 10"/>
+</checkConstraint>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NR_APARTAMENT" id="4E813D20-7C48-B687-C6E6-A269BB06C78E">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 09:50:50 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>client_nr_apartament_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(nr_apartament,&apos;^[0-9]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>999</endValue>
+</rangeDef>
+</listOfRanges>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DE6B60ED-61AD-ED2C-89FD-C0A3A346627F" name="Client PK">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 08:39:00 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4FB7CC6C-F1DE-0565-2F7B-A5A15F3CF119</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="419DBF03-CBA8-26C7-F2C2-DCB0B1FC3909" name="client_email_uk">
+<createdBy>User</createdBy>
+<createdTime>2021-12-15 21:22:39 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="false"/>
+</engineerTo>
+<newElementsIDs>DB533CB8-5965-07DD-F455-18ADAB6AC668</newElementsIDs>
+<usedAttributes>
+<attributeRef>DB533CB8-5965-07DD-F455-18ADAB6AC668</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="88752A6C-AAB3-1283-0E05-194E23A7E743" name="client_telefon_uk">
+<createdBy>User</createdBy>
+<createdTime>2021-12-15 21:30:50 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="false"/>
+</engineerTo>
+<newElementsIDs>7187D4E5-B716-5E85-22CC-D0FC5595BEAC</newElementsIDs>
+<usedAttributes>
+<attributeRef>7187D4E5-B716-5E85-22CC-D0FC5595BEAC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

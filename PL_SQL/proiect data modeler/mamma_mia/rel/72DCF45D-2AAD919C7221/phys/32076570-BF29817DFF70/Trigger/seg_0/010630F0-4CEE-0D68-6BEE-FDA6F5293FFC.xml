@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="actualizare_stoc" directorySegmentName="seg_0" id="010630F0-4CEE-0D68-6BEE-FDA6F5293FFC">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:54:37 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+BEGIN
+    IF :old.finalizata = 1 or (:old.finalizata = 0 and :new.finalizata = 0) THEN
+        RAISE_APPLICATION_ERROR(-20201, 'Stocul nu poate fi actualizat!');
+    ELSE
+        actualizare_stoc.actualizare_stoc_la_plasarea_comenzii(:old.id_comanda);
+    END IF;
+END;
+]]></body>
+<triggerTime>AFTER</triggerTime>
+<columns>E375B25A-95BB-DC19-65BA-539013C14AC4</columns>
+<table>58903011-132D-1480-77FB-9F9FFEB88960</table>
+</TriggerOraclev10g>

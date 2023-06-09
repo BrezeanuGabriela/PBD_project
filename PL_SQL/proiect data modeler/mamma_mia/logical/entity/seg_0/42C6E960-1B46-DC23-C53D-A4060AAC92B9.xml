@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="42C6E960-1B46-DC23-C53D-A4060AAC92B9" name="Facturi">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 12:39:47 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_FACTURA" id="E06C940D-6D0C-A3C2-A8C2-5FBEFEF227EA">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 12:39:56 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SERIE" id="6C226187-E1C4-6D4E-860E-DE61A93A431A">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 12:41:28 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NUMAR" id="8F057871-0682-6042-1CAC-124543C4A3A7">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 12:43:18 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_COMANDA" id="C751815F-53E9-0529-724E-67D078E91A97">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 14:20:50 UTC</createdTime>
+<generatorID>BE0D80FC-1862-38A2-6485-6869C5061EF1</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<referedAttribute>82AA58FF-5D17-DF88-D875-6314400732C5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="10FB88A2-2057-B21D-3AF1-32DE0C6E331A" name="Facturi PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 12:40:17 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E06C940D-6D0C-A3C2-A8C2-5FBEFEF227EA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

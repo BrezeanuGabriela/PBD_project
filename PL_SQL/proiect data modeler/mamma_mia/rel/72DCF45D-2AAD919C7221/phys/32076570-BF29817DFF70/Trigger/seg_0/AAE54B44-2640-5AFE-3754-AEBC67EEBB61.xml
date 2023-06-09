@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="actualizare_total_puncte_card_fidelitate" directorySegmentName="seg_0" id="AAE54B44-2640-5AFE-3754-AEBC67EEBB61">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:27:25 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+    v_total_plata comenzi.total_plata%type;
+    v_id_client clienti.id_client%type;
+    v_total_puncte_anterior carduri_fidelitate.puncte_acumulate%type;
+    v_total_puncte carduri_fidelitate.puncte_acumulate%type;
+BEGIN
+    IF :new.finalizata = 1 AND :old.finalizata = 0 THEN
+        v_total_plata := :new.total_plata;
+        v_id_client := :old.id_client;
+--        actualizare_informatii.actualizare_puncte_card(v_total_plata, v_id_client);
+        
+        SELECT puncte_acumulate INTO v_total_puncte_anterior FROM carduri_fidelitate WHERE id_client = v_id_client;
+	    v_total_puncte := v_total_puncte_anterior + 0.1 * v_total_plata;      
+        UPDATE carduri_fidelitate SET puncte_acumulate = v_total_puncte WHERE id_client = v_id_client;
+	-- TODO: exceptie pe caz contrar
+    END IF;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<columns>E375B25A-95BB-DC19-65BA-539013C14AC4</columns>
+<table>58903011-132D-1480-77FB-9F9FFEB88960</table>
+</TriggerOraclev10g>

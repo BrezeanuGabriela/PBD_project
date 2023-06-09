@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="actualizare_stoc" directorySegmentName="seg_0" id="6A6CCDC5-7EB2-C849-CEFF-8B7DF0EE56A7">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:52:15 UTC</createdTime>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE actualizare_stoc IS
+    PROCEDURE actualizare_stoc_la_plasarea_comenzii (v_id_comanda IN comenzi.id_comanda%TYPE);
+    FUNCTION extrage_id_intrare_stoc (v_id_pizza IN produse_comanda.id_pizza%TYPE) RETURN NUMBER;
+    FUNCTION extrage_cantitate_curenta_stoc (v_id_intrare_stoc IN stocuri_pizza.id_intrare_stoc%TYPE) RETURN NUMBER;
+END actualizare_stoc;
+/
+CREATE OR REPLACE PACKAGE BODY actualizare_stoc AS
+    PROCEDURE actualizare_stoc_la_plasarea_comenzii 
+    (v_id_comanda IN comenzi.id_comanda%TYPE)
+    IS
+        CURSOR c_produse_comanda IS
+            SELECT id_pizza, cantitate
+            FROM produse_comanda
+            WHERE id_comanda = v_id_comanda;
+        v_id_intrare_stoc stocuri_pizza.id_intrare_stoc%TYPE;
+        v_cantitate_curenta stocuri_pizza.cantitate%TYPE;
+    BEGIN
+        FOR r_produs IN c_produse_comanda LOOP
+            v_id_intrare_stoc := extrage_id_intrare_stoc(r_produs.id_pizza);
+            v_cantitate_curenta := extrage_cantitate_curenta_stoc(v_id_intrare_stoc);
+            
+            UPDATE stocuri_pizza 
+            SET cantitate = v_cantitate_curenta - r_produs.cantitate 
+            WHERE id_intrare_stoc = v_id_intrare_stoc;
+            
+        END LOOP;
+    END actualizare_stoc_la_plasarea_comenzii;
+
+    FUNCTION extrage_id_intrare_stoc
+        (v_id_pizza IN produse_comanda.id_pizza%TYPE)
+        RETURN NUMBER
+        IS
+            v_id_intrare_stoc stocuri_pizza.id_intrare_stoc%TYPE;
+        BEGIN
+            SELECT id_intrare_stoc INTO v_id_intrare_stoc FROM stocuri_pizza WHERE id_pizza = v_id_pizza;
+            RETURN v_id_intrare_stoc;
+        END extrage_id_intrare_stoc;
+         
+         
+    FUNCTION extrage_cantitate_curenta_stoc
+        (v_id_intrare_stoc IN stocuri_pizza.id_intrare_stoc%TYPE)
+        RETURN NUMBER
+        IS
+            v_cantitate_curenta produse_comanda.cantitate%TYPE;
+        BEGIN
+            SELECT cantitate INTO v_cantitate_curenta FROM stocuri_pizza WHERE id_intrare_stoc = v_id_intrare_stoc;
+            RETURN v_cantitate_curenta;
+        END extrage_cantitate_curenta_stoc;
+    
+END actualizare_stoc;</source>
+</PackageOracle>

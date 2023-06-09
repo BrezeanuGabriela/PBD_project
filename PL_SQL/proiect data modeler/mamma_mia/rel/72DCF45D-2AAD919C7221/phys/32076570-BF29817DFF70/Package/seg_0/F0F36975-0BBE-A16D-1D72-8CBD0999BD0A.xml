@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="factura_package" directorySegmentName="seg_0" id="F0F36975-0BBE-A16D-1D72-8CBD0999BD0A">
+<createdBy>User</createdBy>
+<createdTime>2023-04-30 21:38:07 UTC</createdTime>
+<ownerDesignName>mamma_mia</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE factura_package AS
+    PROCEDURE inserare_serie_factura(v_id_comanda IN comenzi.id_comanda%TYPE);
+    PROCEDURE actualizare_serie_factura;
+END factura_package;
+/
+
+CREATE OR REPLACE PACKAGE BODY factura_package AS
+    PROCEDURE inserare_serie_factura(v_id_comanda IN comenzi.id_comanda%TYPE)
+    IS
+    BEGIN
+        INSERT INTO facturi (serie, id_comanda) VALUES (&apos; &apos;, v_id_comanda);
+    END inserare_serie_factura;
+    
+    PROCEDURE actualizare_serie_factura
+    IS
+        v_numar facturi.numar%TYPE;
+    BEGIN
+        SELECT numar INTO v_numar FROM facturi ORDER BY id_factura DESC FETCH FIRST 1 ROWS ONLY;
+        UPDATE facturi SET serie = &apos;FOOD-&apos; || v_numar || &apos;-IS&apos; WHERE numar = v_numar;
+    END actualizare_serie_factura;
+END factura_package;</source>
+</PackageOracle>

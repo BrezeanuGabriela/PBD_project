@@ -1,0 +1,176 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="inserare_informatii" directorySegmentName="seg_0" id="3A2D05FB-1A8E-71C4-367D-D0CFA55826BD">
+<createdBy>User</createdBy>
+<createdTime>2023-05-16 21:28:42 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE inserare_informatii IS
+    PROCEDURE insereaza_client_si_card(
+        p_nume           VARCHAR2,
+        p_prenume        VARCHAR2,
+        p_telefon        VARCHAR2,
+        p_email          VARCHAR2,
+        p_cartier        VARCHAR2,
+        p_numar_cartier  NUMBER,
+        p_nr_bloc        NUMBER,
+        p_etaj           NUMBER,
+        p_nr_apartament  NUMBER,
+        p_data_nastere   VARCHAR2
+    );
+    
+    PROCEDURE insereaza_pizza_si_stoc(
+        p_denumire tipuri_pizza.denumire%TYPE,
+        p_gramaj tipuri_pizza.gramaj%TYPE,
+        p_pret tipuri_pizza.pret%TYPE,
+        p_cantitate stocuri_pizza.cantitate%TYPE
+    );
+    
+    FUNCTION adauga_comanda(
+        p_telefon_client IN clienti.telefon%TYPE
+    ) RETURN NUMBER;
+    
+    PROCEDURE adauga_produs_comanda(
+        p_telefon_client IN clienti.telefon%TYPE,
+        p_id_comanda IN comenzi.id_comanda%TYPE,
+        p_denumire_pizza IN tipuri_pizza.denumire%TYPE,
+        p_cantitate produse_comanda.cantitate%TYPE
+    );
+    
+    -- TODO: procedura de a insera cate un produs in comanda
+END inserare_informatii;
+/
+
+CREATE OR REPLACE PACKAGE BODY inserare_informatii AS
+    PROCEDURE insereaza_client_si_card(
+        p_nume           VARCHAR2,
+        p_prenume        VARCHAR2,
+        p_telefon        VARCHAR2,
+        p_email          VARCHAR2,
+        p_cartier        VARCHAR2,
+        p_numar_cartier  NUMBER,
+        p_nr_bloc        NUMBER,
+        p_etaj           NUMBER,
+        p_nr_apartament  NUMBER,
+        p_data_nastere   VARCHAR2
+    )
+    IS
+        v_id_client NUMBER;
+    BEGIN
+        -- Inserarea în tabela &quot;clienti&quot;
+        INSERT INTO clienti (nume, prenume, telefon, email, cartier, numar_cartier, nr_bloc, etaj, nr_apartament)
+        VALUES (p_nume, p_prenume, p_telefon, p_email, p_cartier, p_numar_cartier, p_nr_bloc, p_etaj, p_nr_apartament);
+        
+        v_id_client := vizualizare_informatii.extrage_id_client(p_telefon);
+        
+        IF v_id_client != -1 THEN
+            -- Inserarea în tabela &quot;carduri_fidelitate&quot;
+            INSERT INTO carduri_fidelitate (id_client, data_nastere_client)
+            VALUES (v_id_client, TO_DATE(p_data_nastere, &apos;dd-mon-yyyy&apos;));
+            
+            COMMIT;
+            DBMS_OUTPUT.PUT_LINE(&apos;S-a inserat clientul &apos; || p_nume || &apos; &apos; || p_prenume);
+        ELSE
+            DBMS_OUTPUT.PUT_LINE(&apos;Nu exista un client cu acest numar de telefon.&apos;);
+            ROLLBACK;
+        END IF;
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+--            RAISE;
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat!!! Eroare: &apos; || SQLERRM);   
+    END insereaza_client_si_card;
+    
+    PROCEDURE insereaza_pizza_si_stoc(
+        p_denumire IN tipuri_pizza.denumire%TYPE,
+        p_gramaj IN tipuri_pizza.gramaj%TYPE,
+        p_pret IN tipuri_pizza.pret%TYPE,
+        p_cantitate IN stocuri_pizza.cantitate%TYPE
+    )
+    IS
+        v_id_pizza tipuri_pizza.id_pizza%TYPE;
+    BEGIN
+        -- Inserare în tabela tipuri_pizza
+        INSERT INTO tipuri_pizza (denumire, gramaj, pret)
+        VALUES (p_denumire, p_gramaj, p_pret)
+        RETURNING id_pizza INTO v_id_pizza;
+
+        -- Inserare în tabela stocuri_pizza
+        INSERT INTO stocuri_pizza (cantitate, id_pizza)
+        VALUES (p_cantitate, v_id_pizza);
+
+        -- Commit tranzac?ie
+        COMMIT;
+        
+        DBMS_OUTPUT.PUT_LINE(&apos;S-a inserat pizza &apos; || p_denumire);
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+--            RAISE;
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat!!! Eroare: &apos; || SQLERRM);  
+    END;
+    
+    FUNCTION adauga_comanda(
+        p_telefon_client IN clienti.telefon%TYPE
+    ) RETURN NUMBER
+    IS
+        v_id_client clienti.id_client%TYPE;
+        v_id_comanda comenzi.id_comanda%TYPE;
+    BEGIN
+        -- Extrage id-ul de client
+        v_id_client := vizualizare_informatii.extrage_id_client(p_telefon_client);
+        
+        IF v_id_client != -1 THEN
+            -- Inserare în tabela comenzi
+            INSERT INTO comenzi (data_comanda, id_client, total_plata, finalizata)
+            VALUES (SYSDATE, v_id_client, 0, 0)
+            RETURNING id_comanda INTO v_id_comanda;
+            
+            COMMIT;
+            DBMS_OUTPUT.PUT_LINE(&apos;Comanda cu id-ul &apos;|| v_id_comanda || &apos; pentru clientul cu telefonul &apos; || p_telefon_client || &apos; a fost adaugata cu succes.&apos;);
+            
+            RETURN v_id_comanda;
+        ELSE
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat!!! Eroare: Nu exista un client cu acest numar de telefon.&apos;);
+            ROLLBACK;
+            RETURN -1;
+        END IF;
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat!!! Eroare: &apos; || SQLERRM);
+            ROLLBACK;
+    END;
+    
+    PROCEDURE adauga_produs_comanda(
+        p_telefon_client IN clienti.telefon%TYPE,
+        p_id_comanda IN comenzi.id_comanda%TYPE,
+        p_denumire_pizza IN tipuri_pizza.denumire%TYPE,
+        p_cantitate produse_comanda.cantitate%TYPE
+    )
+    IS
+        v_id_client NUMBER;
+        v_id_pizza tipuri_pizza.id_pizza%TYPE;
+    BEGIN
+        v_id_client := vizualizare_informatii.extrage_id_client(p_telefon_client);
+        v_id_pizza  := vizualizare_informatii.extrage_id_pizza(p_denumire_pizza);
+        
+        IF v_id_client != -1 THEN
+            IF v_id_pizza != -1 THEN
+                INSERT INTO produse_comanda (id_comanda, id_pizza, cantitate)
+                VALUES (p_id_comanda, v_id_pizza, p_cantitate);
+                COMMIT;
+                DBMS_OUTPUT.PUT_LINE(&apos;S-a inserat cu succes produsul &apos; || p_denumire_pizza || &apos; la comanda cu id-ul &apos; || p_id_comanda);
+            ELSE
+                DBMS_OUTPUT.PUT_LINE(&apos;Tranzatia nu s-a efectuat!!! Eroare: Nu exista tipul de pizza solicitat.&apos;);
+                ROLLBACK;
+            END IF;
+        ELSE
+            DBMS_OUTPUT.PUT_LINE(&apos;Tranzactia nu s-a efectuat!!! Eroare: Nu exista un client cu acest numar de telefon.&apos;);
+            ROLLBACK;
+        END IF;
+        
+    EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.put_line(&apos;Tranzactia de inserare a produsului nu s-a efectuat!!!&apos;);
+                ROLLBACK; 
+    END adauga_produs_comanda;
+END inserare_informatii;</source>
+</PackageOracle>

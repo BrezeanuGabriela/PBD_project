@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1CC0F8EC-2AA4-1B21-8027-256AC13EFA54" name="Stocuri_pizza">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>D04B780B-8C2D-4DD7-852D-BE34A888786A</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_INTRARE_STOC" id="38400C3E-0FD9-018C-D6A1-AF07EE7FCD4F">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>67F14A21-2759-40EA-8B01-46B466387AED</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CANTITATE" id="8FAEA87B-AABB-EEB5-70FB-CF821FA6FB82">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>BBA7A562-D7B3-76F3-9EB8-BA48A8D91056</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>cantitate_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="cantitate &gt;= 0"/>
+</checkConstraint>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_PIZZA" id="979916CD-0476-4C72-B93F-0D59DC5BF576">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>9295A340-DA33-7FFD-B9F1-5E5304469FAF</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="06F4957B-F969-483E-9BFE-6029BBF0197B" referredColumn="55BE2C86-2587-E53B-CCBD-3B7ACE71E863"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FA33849B-8295-BA48-AEC2-BBC737AD3D03" name="Stoc_pizza_PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>22B48F06-D3F6-87B1-7929-635429420AD5</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="38400C3E-0FD9-018C-D6A1-AF07EE7FCD4F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="938B4365-F169-2F5B-24BF-36C946F6DA0B" name="Stocuri_pizza__IDX">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>B14885EA-36F5-FA82-3FF3-A29087AE2308</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="979916CD-0476-4C72-B93F-0D59DC5BF576"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="999E5996-F437-CCDA-1EED-7B62E1547DA5" name="Relation_15">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>B14885EA-36F5-FA82-3FF3-A29087AE2308</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="979916CD-0476-4C72-B93F-0D59DC5BF576"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

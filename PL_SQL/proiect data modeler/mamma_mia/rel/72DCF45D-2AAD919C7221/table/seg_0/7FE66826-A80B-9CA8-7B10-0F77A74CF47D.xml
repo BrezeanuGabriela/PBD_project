@@ -1,0 +1,228 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7FE66826-A80B-9CA8-7B10-0F77A74CF47D" name="Clienti">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>CF9466EB-74D7-03B6-ECD5-BD091D5DAA82</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_CLIENT" id="E4807FF8-B6C7-BDEC-3C70-77DEAABCB8AF">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>4FB7CC6C-F1DE-0565-2F7B-A5A15F3CF119</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>99999</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+<Column name="NUME" id="027CB166-6CD9-FC92-7320-6D0F685CCA99">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>FFC827D9-C577-AE52-54F6-90B61ED3538C</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_nume_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(nume)&gt;1 and regexp_like(nume,&apos;^[A-Za-z]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRENUME" id="0C5283AA-A272-7EC0-F561-17C31186268F">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>3E9BD596-7665-BD20-F966-FFBF5CFF36CC</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_prenume_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(PRENUME)&gt;1 and regexp_like(prenume,&apos;^[A-Za-z]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TELEFON" id="0269F814-D6DC-B80D-C030-E35377633394">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>7187D4E5-B716-5E85-22CC-D0FC5595BEAC</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_telefon_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(telefon,&apos;^07[0-9]{8}$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="E68AFD04-1AAB-47AA-49B8-4416FD9DD757">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>DB533CB8-5965-07DD-F455-18ADAB6AC668</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_email_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(EMAIL, &apos;[a-z0-9._%-]+@[a-z0-9._%-]+\.[a-z]{2,4}&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>60,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CARTIER" id="D9D30F10-3C36-75FD-19F8-8DEED23930E3">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>614296CA-9288-62CF-E7FC-F49F7B42E1A7</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_cartier_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(cartier)&gt;1 and regexp_like(cartier,&apos;^[A-Za-z+$]&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NUMAR_CARTIER" id="A74B60D7-A3C1-1874-7EA7-9EC70D50BF4F">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>D16E418B-46B0-B293-382D-1234E2769F83</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_numar_cartier_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(numar_cartier,&apos;^[0-9]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>999</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+<Column name="NR_BLOC" id="D4B7ABE0-3B4F-A228-A20F-56926D3649C6">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>61C041FD-1CA6-51DB-18A8-C3E3742E8790</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_nr_bloc_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(nr_bloc,&apos;^[0-9]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>999</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+<Column name="ETAJ" id="F4565441-1C30-AFDF-1EC3-E127DFD491FB">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>2F541058-020A-960C-1C5A-0A1504FC2BD2</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_etaj_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(etaj,&apos;^[0-9]+$&apos;) and etaj between 0 and 10"/>
+</checkConstraint>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NR_APARTAMENT" id="2992AB2A-5DEE-73F9-82A0-C9902F840CF4">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>4E813D20-7C48-B687-C6E6-A269BB06C78E</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<constraintName>client_nr_apartament_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(nr_apartament,&apos;^[0-9]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>999</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4BFC8E13-94CD-1B2A-0481-965956143B85" name="Client_PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>DE6B60ED-61AD-ED2C-89FD-C0A3A346627F</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E4807FF8-B6C7-BDEC-3C70-77DEAABCB8AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="57228034-D3FD-3744-95DA-5B336B2E2964" name="client_email_uk">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>419DBF03-CBA8-26C7-F2C2-DCB0B1FC3909</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E68AFD04-1AAB-47AA-49B8-4416FD9DD757"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="968A851F-4AE1-99A7-8385-9335E2341C84" name="client_telefon_uk">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>88752A6C-AAB3-1283-0E05-194E23A7E743</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0269F814-D6DC-B80D-C030-E35377633394"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

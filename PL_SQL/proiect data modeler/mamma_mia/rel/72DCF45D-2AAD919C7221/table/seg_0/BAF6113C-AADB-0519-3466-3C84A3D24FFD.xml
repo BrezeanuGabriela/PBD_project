@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BAF6113C-AADB-0519-3466-3C84A3D24FFD" name="Carduri_fidelitate">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>8A92B8AB-93DA-C457-45B7-DB7D96D94737</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_CLIENT" id="AC70BBF1-40FA-2B2E-EF6B-DF3ED18A684E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>0D886F2D-76E4-C8CC-E0E0-308567FB11B9</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="63704AF1-3178-0E63-0BED-C500B30C32BC" referredColumn="E4807FF8-B6C7-BDEC-3C70-77DEAABCB8AF"/>
+</associations>
+</Column>
+<Column name="ID_CARD" id="ECA3284C-7DEC-6397-CC6D-514DC8E3F98E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>8C289238-6B05-DDF2-E788-12BF747FC750</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA_NASTERE_CLIENT" id="0EE87159-0179-6418-5E9A-608F9E346B4E">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>61225D52-FA08-8E30-1823-BD4C34722F4D</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PUNCTE_ACUMULATE" id="C8C9278E-AC73-67D6-7F77-082F21F013A4">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>B8A10E5B-5881-396B-976F-490AE08EACBB</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypeScale>2</dataTypeScale>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="09F2F0A1-E6B8-8A91-A64D-172DDB72E0F6" name="Card_fidelitate_PK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>9898D8E6-6E9A-FFB3-8A4A-B8E6BED0FCD6</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC70BBF1-40FA-2B2E-EF6B-DF3ED18A684E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="349D688C-04CB-41B8-EDDF-622A59B470CB" name="client.id_card_uk">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>0F80258A-DA12-9BE1-6A9B-B878EBC58929</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ECA3284C-7DEC-6397-CC6D-514DC8E3F98E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="135A83F2-8160-C819-AA8D-807C199DB521" name="client_card_fidelitate">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>6AFFF4A0-AC7D-FF31-B98F-78349A59C896</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC70BBF1-40FA-2B2E-EF6B-DF3ED18A684E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

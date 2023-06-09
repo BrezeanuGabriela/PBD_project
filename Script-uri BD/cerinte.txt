@@ -1,0 +1,65 @@
+Delivery pizza (ca la Mamma mia doar cu pizza)
+
+Tabele necesare:
+1. tipuri pizza- meniu
+2. sofer (fara zile si ore lucrate pentru simplitate)
+3. masina
+4. client
+5. comenda
+6. card_fidelitate
+
+Reguli de business:
+
+-nu se trateaza problema unui lant de pizzerii
+
+-exista cantitati nelimitate de pizza(nu exista posibilitatea de stoc epuizat)
+-nu se pot personaliza sortimentele
+-pizza se vinde doar intreaga, nu la felie
+
+-fiecare sofer are doar o masina asociata, insa o masina poate fi condusa de mai multi soferi
+-un sofer poate avea POS
+-o comanda poate fi dusa doar de un sofer - unique pe id comanda, sofer
+-masinile sunt de un tip, dar pot fi din ani diferiti(volkswagen up)
+-soferii trebuie sa aiba minim 18 ani - in check ul de la cnp
+
+-pretul unei pizza este mai mare de 0 lei
+-nu sunt promotii (e pret fix pentru simplitate)
+
+-clientii magazinului sunt din orasul Iasi(pentru simplitate), orice bulevard
+-clientul poate locui la casa sau bloc
+
+-clientii au card de fidelitate
+
+-comenzile nu se fac doar pe baza de card de fidelitate
+-pentru fiecare comanda, clientul va primi 10% din valoarea acesteia sub forma de puncte pe card
+-punctele de pe card deja existente pot fi scazute din valoarea comenzii
+
+-nu exista limita de bucati de pizza/comanda
+
+-fiecare bon fiscal are o serie unica formata din 5 cifre
+-fiecare comanda are un bon fiscal unic
+
+Aplicatia permite:
+-vanzarea de pizza catre clienti cu actualizarea numarului de puncte de pe card
+-obtinerea de informatii pentru anumite statistici: 
+(instructiuni in script-ul de test, nu si in interfata grafica)
+	-numarul de comenzi pe fiecare cartier
+	-numarul de comenzi date de fiecare client
+	-numarul de comenzi livrate/preluate de fiecare sofer
+	-varsta tuturor soferilor
+	-soferul cel mai tanar si cel mai in varsta
+	-clientul/clientii cu cele mai multe comenzi
+	-valoarea fiecarei comenzi
+	-rest de plata dupa utilizarea punctelor
+
+-evidenta numarului de comenzi livrate de fiecare sofer (numarul minim de comenzi de livrat e 2, orice comanda peste acest numar ii aduce un bonus de 5 lei la salariu) 
+-evidenta celor mai comandate tipuri de pizza
+
+
+
+
+
+
+
+
+

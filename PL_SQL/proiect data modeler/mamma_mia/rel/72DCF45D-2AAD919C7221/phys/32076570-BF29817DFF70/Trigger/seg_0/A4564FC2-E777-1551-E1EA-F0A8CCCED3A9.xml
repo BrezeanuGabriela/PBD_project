@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="verificare_data_nasterii" directorySegmentName="seg_0" id="A4564FC2-E777-1551-E1EA-F0A8CCCED3A9">
+<createdBy>User</createdBy>
+<createdTime>2023-05-16 20:56:43 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<actions>INSERT, UPDATE</actions>
+<body><![CDATA[DECLARE
+    current_date DATE := SYSDATE;
+BEGIN
+    IF (:NEW.data_nastere_client + INTERVAL '14' YEAR) > current_date THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Clientul trebuie sa aiba macar 14 ani impliniti.');
+    END IF;
+END;]]></body>
+<triggerTime>AFTER</triggerTime>
+<table>BAF6113C-AADB-0519-3466-3C84A3D24FFD</table>
+</TriggerOraclev10g>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A7FB1093-99AB-807F-E92C-17223B0C8108" containerWithKeyObject="91019706-19E0-C24E-9063-70CEB22A886C" localFKIndex="32A97733-EA06-6635-9D9F-AC0F02AC34B6" name="prod_com_tip_pizza_FK">
+<createdBy>User</createdBy>
+<createdTime>2023-04-19 16:38:01 UTC</createdTime>
+<generatorID>89EE5ACC-2F3A-2D4D-26BE-CEEB43F5D005</generatorID>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<referredTableLongName>Tipuri_pizza</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>993ED980-59E4-6CAE-C7E1-E7C1F7E5A027</referredTableID>
+<keyObject>5E1FB3B6-8C35-E313-61BC-23B9DF960EC8</keyObject>
+<referredKeyID>5E1FB3B6-8C35-E313-61BC-23B9DF960EC8</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_PIZZA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

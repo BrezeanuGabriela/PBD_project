@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CD2E82E7-D1B1-3337-AB7B-7D014CCF2E86" name="Tipuri_pizza">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 08:50:56 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_PIZZA" id="F31C376B-70D0-33E4-AD5C-53D4983A5DD7">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 10:22:43 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DENUMIRE" id="CEA13925-1C4A-CBB9-C6C2-5BDA9D17924B">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 10:26:26 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>tipuri_pizza_denumire_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(denumire)&gt;0 and regexp_like(denumire,&apos;^[a-zA-Z]+$&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="GRAMAJ" id="E6BB74BD-504E-208F-D4D1-F3D53D886A70">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 10:26:44 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>tipuri_pizza_gramaj_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="GRAMAJ between 0 and 2000"/>
+</checkConstraint>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PRET" id="8822F048-4ACA-00E0-EA4E-88AFBEFFF8A8">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 10:27:00 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="true"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="true"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="true"/>
+</engineerTo>
+<constraintName>tipuri_pizza_pret_ck</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>99</endValue>
+</rangeDef>
+</listOfRanges>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="99FDA958-3EAA-2E07-CDF2-A8CE78F22059" name="Tipuri_pizza PK">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 10:26:23 UTC</createdTime>
+<ownerDesignName>mamma_mia_data_modeler</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="199DC884-8D0B-DBFA-8254-1EEE14B48E9F" value="false"/>
+<item key="0687E79A-A979-BD2C-2A76-B4A9E9819223" value="false"/>
+<item key="72DCF45D-B137-F894-8946-2AAD919C7221" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F31C376B-70D0-33E4-AD5C-53D4983A5DD7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

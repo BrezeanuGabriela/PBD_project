@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="mamma_mia" id="BDFE1530-4372-C17C-29A7-E527CF2AD2D0" version="3.5">
+<createdBy>User</createdBy>
+<createdTime>2021-10-22 08:37:33 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>BDFE1530-4372-C17C-29A7-E527CF2AD2D0</designId>
+</OSDM_Design>
